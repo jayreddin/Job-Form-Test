@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+<title>Mobile Form</title>
+<!-- <style>
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+    }
+</style> -->
+</head>
+<body>
+<div id="page1" class="card">
+    <h2>Technicians Name</h2>
+    <input type="text" id="name" placeholder="Enter name">
+    <button onclick="nextPage(1)">Next</button>
+</div>
+
+<div id="page2" class="card" style="display:none;">
+    <h2>Job Address</h2>
+    <input type="text" id="address" placeholder="Enter address">
+    <!-- Add this button inside your page2 div -->
+    <button onclick="getLocation()">Use GPS</button>
+
+    
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwxPK9CniX62q4n-wPCbTCKE5P43s-zDw&callback=initMap">
+        </script>
+    <script>
+    function initMap() {
+        // Map initialization code goes here (if you have a map)
+    }
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        var latlng = new google.maps.LatLng(lat, lng);
+
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'location': latlng}, function(results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                    document.getElementById('address').value = results[0].formatted_address;
+                } else {
+                    alert('No address found');
+                }
+            } else {
+                alert('Geocoder failed due to: ' + status);
+            }
+        });
+    }
+
+    function showError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                alert("User denied the request for Geolocation.");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                alert("Location information is unavailable.");
+                break;
+            case error.TIMEOUT:
+                alert("The request to get user location timed out.");
+                break;
+            case error.UNKNOWN_ERROR:
+                alert("An unknown error occurred.");
+                break;
+        }
+    }
+
+    </script>
+
+    <button onclick="nextPage(2)">Next</button>
+</div>
+
+<div id="page3" class="card" style="display:none;">
+    <h2>Tasks Completed</h2>
+    <input type="text" id="task1" placeholder="Task 1">
+    <button onclick="addTask()">Add More Tasks</button>
+    <button onclick="nextPage(3)">Next</button>
+</div>
+
+    <div id="page4" class="card" style="display:none;">
+        <h2>Did You Purchase Materials?</h2>
+        <label><input type="radio" name="purchase" value="yes"> Yes</label>
+        <label><input type="radio" name="purchase" value="no"> No</label>
+        <button onclick="nextPage(4)">Next</button> 
+    </div>
+
+<div id="page5" class="card" style="display:none;">
+    <h2>How Many Invoices?</h2>
+    <input type="number" id="invoices">
+    <h2>List Suppliers Below:</h2>
+    <div id="suppliers"></div>
+    <button onclick="addSuppliers()">Add Suppliers</button>
+    <button onclick="nextPage(5)">Next</button>
+</div>
+
+<div id="page6" class="card" style="display:none;">
+    <h2>Is there Return Work?</h2>
+    <label><input type="radio" name="return" value="yes"> Yes</label>
+    <label><input type="radio" name="return" value="no"> No</label>
+    <button onclick="nextPage(6)">Next</button>
+</div>
+
+<div id="page7" class="card" style="display:none;">
+    <h2>Briefly Describe Return Works/Tasks</h2>
+    <textarea id="return"></textarea>
+    <button onclick="nextPage(7)">Next</button>
+</div>
+
+<div id="page8" class="card" style="display:none;">
+    <h2>Upload Images</h2>
+    <input type="file" id="images">
+    <button onclick="submitForm()">Submit</button>
+</div>
+
+<script>
+
+
+    let currentPage = 1;
+    let data = {};
+
+    function nextPage() {
+        document.getElementById("page" + currentPage).style.display = "none";
+        currentPage++;
+        document.getElementById("page" + currentPage).style.display = "block";
+    }
+
+    function previousPage() {
+        document.getElementById("page" + currentPage).style.display = "none";
+        currentPage--;
+        document.getElementById("page" + currentPage).style.display = "block";
+    }
+    
+
+
+
+
+    
+
+    
+    function addTask() {
+        let taskNumber = document.querySelectorAll('[id^=task]').length + 1;
+        let input = document.createElement('input');
+        input.type = 'text';
+        input.id = 'task' + taskNumber;
+        input.placeholder = 'Task ' + taskNumber;
+        document.getElementById('page3').appendChild(input);
+    }
+
+    function addSuppliers() {
+        let suppliers = document.getElementById('suppliers');
+        let input = document.createElement('input');
+        input.type = 'text';
+        suppliers.appendChild(input);
+    }
+
+    function submitForm() {
+        // Compile form data and generate PDF
+        // Code to be added here
+    }
+</script>
+</body>
+</html>
+
