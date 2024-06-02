@@ -20,14 +20,18 @@
 <div id="page1" class="card">
     <h2>Technicians Name</h2>
     <input type="text" id="name" placeholder="Enter name here">
+    <div class="card-footer">
     <button onclick="nextPage(1)">Next</button>
+</div>
 </div>
 
 <div id="page2" class="card" style="display:none;">
     <h2>Job Address</h2>
     <input type="text" id="address" placeholder="Enter address here or click GPS button">
     <!-- Add this button inside your page2 div -->
-    <button onclick="getLocation()">GPS</button>
+    <div class="card-footer">
+        <button onclick="previousPage(1)">Previous</button>
+        <button onclick="getLocation()">GPS</button>
 
     
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwxPK9CniX62q4n-wPCbTCKE5P43s-zDw&callback=initMap">
@@ -82,22 +86,30 @@
     }
 
     </script>
-
+    
     <button onclick="nextPage(2)">Next</button>
+
+</div>
 </div>
 
 <div id="page3" class="card" style="display:none;">
     <h2>Tasks Completed</h2>
     <input type="text" id="task1" placeholder="1st Task">
-    <button onclick="addTask()">Add More Tasks</button>
-    <button onclick="nextPage(3)">Next</button>
+    <div class="card-footer">
+        <button onclick="previousPage(2)">Previous</button>
+        <button onclick="addTask()">Add Tasks</button>
+        <button onclick="nextPage(3)">Next</button>
+</div>
 </div>
 
     <div id="page4" class="card" style="display:none;">
         <h2>Did You Purchase Materials?</h2>
         <label><input type="radio" name="purchase" value="yes"> Yes</label>
         <label><input type="radio" name="purchase" value="no"> No</label>
-        <button onclick="nextPage(4)">Next</button> 
+        <div class="card-footer">
+            <button onclick="previousPage(3)">Previous</button>
+            <button onclick="nextPage(4)">Next</button> 
+    </div>
     </div>
 
 <div id="page5" class="card" style="display:none;">
@@ -105,27 +117,40 @@
     <input type="number" id="invoices">
     <h2>List Suppliers Below:</h2>
     <div id="suppliers"></div>
-    <button onclick="addSuppliers()">Add Suppliers</button>
-    <button onclick="nextPage(5)">Next</button>
+    <div class="card-footer">
+        <button onclick="previousPage(4)">Previous</button>
+        <button onclick="addSuppliers()">Add Suppliers</button>
+
+        <button onclick="nextPage(5)">Next</button>
+</div>
 </div>
 
 <div id="page6" class="card" style="display:none;">
     <h2>Is there Return Work?</h2>
     <label><input type="radio" name="return" value="yes"> Yes</label>
     <label><input type="radio" name="return" value="no"> No</label>
-    <button onclick="nextPage(6)">Next</button>
+    <div class="card-footer">
+        <button onclick="previousPage(5)">Previous</button>
+        <button onclick="nextPage(6)">Next</button>
+    </div>
 </div>
 
 <div id="page7" class="card" style="display:none;">
     <h2>Briefly Describe Return Works/Tasks</h2>
     <textarea id="return"></textarea>
-    <button onclick="nextPage(7)">Next</button>
+    <div class="card-footer">
+        <button onclick="previousPage(6)">Previous</button>
+        <button onclick="nextPage(7)">Next</button>
+</div>
 </div>
 
 <div id="page8" class="card" style="display:none;">
     <h2>Upload Images</h2>
     <input type="file" id="images">
-    <button onclick="submitForm()">Submit</button>
+    <div class="card-footer">
+        <button onclick="previousPage(7)">Previous</button>
+        <button onclick="submitForm()">Submit</button>
+</div>
 </div>
 
 <script>

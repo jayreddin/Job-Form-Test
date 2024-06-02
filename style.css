@@ -7,20 +7,20 @@ body {
 }
 
 .card {
-  border: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: auto;
-  background-color: #fff;
-  border: 5px solid;
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  right: 10%;
-  transform: translate(-10%, -50%);
-  padding: 10px;
+  position: relative; /* Set the .card to position relative */
+  padding-bottom: 60px; /* Add padding at the bottom to make space for the footer */
+}
+
+.card-footer {
+  position: absolute; /* Position the footer at the bottom */
+  bottom: 0; /* Align the footer to the bottom */
+  width: 100%; /* Make the footer full width */
+  height: 50px; /* Set a fixed height for the footer */
+  display: flex; /* Use flexbox for easy horizontal centering */
+  align-items: center; /* Center the content vertically */
+  justify-content: center; /* Center the content horizontally */
+  background-color: #f1f1f1; /* Give the footer a background color */
+  border-top: 1px solid #ccc; /* Add a top border for visual separation */
 }
 
 h2 {
