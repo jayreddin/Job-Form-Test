@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css" />
-<title>Mobile Form</title>
+<title>Job Task Form</title>
 <!-- <style>
     .card {
         border: 1px solid #ccc;
@@ -19,15 +19,15 @@
 <body>
 <div id="page1" class="card">
     <h2>Technicians Name</h2>
-    <input type="text" id="name" placeholder="Enter name">
+    <input type="text" id="name" placeholder="Enter name here">
     <button onclick="nextPage(1)">Next</button>
 </div>
 
 <div id="page2" class="card" style="display:none;">
     <h2>Job Address</h2>
-    <input type="text" id="address" placeholder="Enter address">
+    <input type="text" id="address" placeholder="Enter address here or click GPS button">
     <!-- Add this button inside your page2 div -->
-    <button onclick="getLocation()">Use GPS</button>
+    <button onclick="getLocation()">GPS</button>
 
     
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwxPK9CniX62q4n-wPCbTCKE5P43s-zDw&callback=initMap">
@@ -88,7 +88,7 @@
 
 <div id="page3" class="card" style="display:none;">
     <h2>Tasks Completed</h2>
-    <input type="text" id="task1" placeholder="Task 1">
+    <input type="text" id="task1" placeholder="1st Task">
     <button onclick="addTask()">Add More Tasks</button>
     <button onclick="nextPage(3)">Next</button>
 </div>
