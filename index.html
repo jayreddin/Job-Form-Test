@@ -182,7 +182,10 @@
 <div id="page8" class="card" style="display:none;">
     <h2>Upload Images</h2>
 
-     <input type="file" id="imageInput" accept="image/*" multiple>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="imageInput" name="images" accept="image/*" multiple>
+        <button type="submit">Upload Images</button>
+      </form>
       <div class="preview-container" id="previewContainer"></div>
     <div class="card-footer">
         <button onclick="previousPage()">Previous</button>
@@ -192,8 +195,26 @@
 
 <script>
 
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      fetch('/upload', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.text())
+      .then(data => {
+        console.log(data);
+        // Clear the preview container or handle the response
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+
     document.getElementById('imageInput').addEventListener('change', function(event) {
       const previewContainer = document.getElementById('previewContainer');
+      previewContainer.innerHTML = '';
       const files = event.target.files;
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
