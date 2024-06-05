@@ -7,14 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css" />
 <title>Job Task Form</title>
-<!-- <style>
-    .card {
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 10px;
-        margin: 10px;
-    }
-</style> -->
 </head>
 <body>
 <div id="page1" class="card">
@@ -25,12 +17,10 @@
 </div>
 </div>
 
-<div id="page2" class="card" style="display:none;">
+<div id="page2" class="card" style="display:none">
     <h2>Job Address</h2>
-    <input type="text" id="address" placeholder="Enter address here or click GPS button">
     <!-- Add this button inside your page2 div -->
-    <div class="card-footer">
-        <button onclick="previousPage(1)">Previous</button>
+    <div class="gps-button">
         <button onclick="getLocation()">GPS</button>
 
     
@@ -38,7 +28,7 @@
         </script>
     <script>
     function initMap() {
-        // Map initialization code goes here (if you have a map)
+        // Map initialization code for GPS Auto Find
     }
 
     function getLocation() {
@@ -86,22 +76,34 @@
     }
 
     </script>
+    </div>
     
+         <input type="text" id="address" placeholder="Enter address here or click GPS button">
+
+        <div class="card-footer">
+            <button onclick="previousPage(1)">Previous</button>
     <button onclick="nextPage(2)">Next</button>
 
 </div>
 </div>
-
-<div id="page3" class="card" style="display:none;">
-    <h2>Tasks Completed</h2>
-    <input type="text" id="task1" placeholder="1st Task">
-    <div class="card-footer">
-        <button onclick="previousPage(2)">Previous</button>
-        <button onclick="addTask()">Add Tasks</button>
-        <button onclick="nextPage(3)">Next</button>
-</div>
-</div>
-
+    
+    <div id="page3" class="card" style="display:none;">
+        <h2>Tasks Completed</h2>
+        <div class="full-width-button">
+            <button onclick="addTask()">Add Tasks</button>
+        </div>
+        <input type="text" id="task1" placeholder="1st Task">
+        
+        
+            
+       
+        <div class="card-footer">
+            <button onclick="previousPage(2)">Previous</button>
+            <button onclick="nextPage(3)">Next</button>
+        </div>
+    </div>
+    
+    
     <div id="page4" class="card" style="display:none;">
         <h2>Did You Purchase Materials?</h2>
         <label><input type="radio" name="purchase" value="yes"> Yes</label>
@@ -114,14 +116,17 @@
 
 <div id="page5" class="card" style="display:none;">
     <h2>How Many Invoices?</h2>
-    <input type="number" id="invoices">
+    <input type="number" id="invoices"
+        pattern="\d*" inputmode="numeric">
     <h2>List Suppliers Below:</h2>
     <div id="suppliers"></div>
-    <div class="card-footer">
-        <button onclick="previousPage(4)">Previous</button>
+    <div class="full-width-button">
         <button onclick="addSuppliers()">Add Suppliers</button>
-
-        <button onclick="nextPage(5)">Next</button>
+    </div>
+    <div class="card-footer">
+        <button onclick="previousPage(4
+                                    )">Previous</button>
+        <button onclick="nextPage()">Next</button>
 </div>
 </div>
 
@@ -130,8 +135,8 @@
     <label><input type="radio" name="return" value="yes"> Yes</label>
     <label><input type="radio" name="return" value="no"> No</label>
     <div class="card-footer">
-        <button onclick="previousPage(5)">Previous</button>
-        <button onclick="nextPage(6)">Next</button>
+        <button onclick="previousPage()">Previous</button>
+        <button onclick="nextPage()">Next</button>
     </div>
 </div>
 
@@ -139,8 +144,8 @@
     <h2>Briefly Describe Return Works/Tasks</h2>
     <textarea id="return"></textarea>
     <div class="card-footer">
-        <button onclick="previousPage(6)">Previous</button>
-        <button onclick="nextPage(7)">Next</button>
+        <button onclick="previousPage()">Previous</button>
+        <button onclick="nextPage()">Next</button>
 </div>
 </div>
 
@@ -148,7 +153,7 @@
     <h2>Upload Images</h2>
     <input type="file" id="images">
     <div class="card-footer">
-        <button onclick="previousPage(7)">Previous</button>
+        <button onclick="previousPage()">Previous</button>
         <button onclick="submitForm()">Submit</button>
 </div>
 </div>
@@ -160,24 +165,62 @@
     let data = {};
 
     function nextPage() {
+        // Hide the current page
         document.getElementById("page" + currentPage).style.display = "none";
-        currentPage++;
+
+        // Conditional navigation logic for page 4
+        if (currentPage === 4) {
+            var purchaseAnswer = document.querySelector('input[name="purchase"]:checked');
+            if (purchaseAnswer && purchaseAnswer.value === 'yes') {
+                currentPage = 5;
+            } else {
+                currentPage = 6;
+            }
+        }
+        // Conditional navigation logic for page 6
+        else if (currentPage === 6) {
+            var returnAnswer = document.querySelector('input[name="return"]:checked');
+            if (returnAnswer && returnAnswer.value === 'yes') {
+                currentPage = 7;
+            } else {
+                currentPage = 8;
+            }
+        } else {
+            currentPage++;
+        }
+
+        // Show the new page
         document.getElementById("page" + currentPage).style.display = "block";
     }
 
     function previousPage() {
+        // Hide the current page
         document.getElementById("page" + currentPage).style.display = "none";
-        currentPage--;
+
+        // Conditional logic for returning to the correct previous page
+        if (currentPage === 5 || currentPage === 7) {
+            // If we're on a page that follows a 'yes' selection, go back to the yes/no question page
+            currentPage -= 2;
+        } else if (currentPage === 6 || currentPage === 8) {
+            // If we're on a page that follows a 'no' selection, go back to the yes/no question page
+            currentPage--;
+            var previousPageYesNo = currentPage - 1;
+            var previousAnswer = document.querySelector('input[name="purchase"]:checked');
+            if (currentPage === 6 && previousAnswer && previousAnswer.value === 'no') {
+                currentPage = 4;
+            }
+            previousAnswer = document.querySelector('input[name="return"]:checked');
+            if (currentPage === 8 && previousAnswer && previousAnswer.value === 'no') {
+                currentPage = 6;
+            }
+        } else {
+            currentPage--;
+        }
+
+        // Show the new page
         document.getElementById("page" + currentPage).style.display = "block";
     }
-    
 
-
-
-
-    
-
-    
     function addTask() {
         let taskNumber = document.querySelectorAll('[id^=task]').length + 1;
         let input = document.createElement('input');

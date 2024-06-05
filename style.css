@@ -7,21 +7,58 @@ body {
 }
 
 .card {
-  position: relative; /* Set the .card to position relative */
-  padding-bottom: 60px; /* Add padding at the bottom to make space for the footer */
+  position: relative; 
+  padding-bottom: 60px; 
+}
+
+
+.full-width-button {
+  position: relative;
+  width: 100%;
+  left: 0;
+  right: 0;
+  margin-bottom: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+}
+
+.gps-button {
+
+  width: auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .card-footer {
-  position: absolute; /* Position the footer at the bottom */
-  bottom: 0; /* Align the footer to the bottom */
-  width: 100%; /* Make the footer full width */
-  height: 50px; /* Set a fixed height for the footer */
-  display: flex; /* Use flexbox for easy horizontal centering */
-  align-items: center; /* Center the content vertically */
-  justify-content: center; /* Center the content horizontally */
-  background-color: #f1f1f1; /* Give the footer a background color */
-  border-top: 1px solid #ccc; /* Add a top border for visual separation */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  background-color: #f1f1f1;
+  border-top: 0px solid #ccc;
+  justify-content: space-between;
 }
+
+.card-footer button {
+    margin-bottom: 50px;
+    margin: 0 20px;
+    marign-top: 50px;
+    width: 130px;
+}
+
+.yes-no-options {
+  text-align: center;
+}
+
+/* .yes-no-options label {
+  font-size: 1.5em;
+}
+*/
+
 
 h2 {
   color: #333;
@@ -46,22 +83,21 @@ input[type="radio"] {
   margin-right: 5px;
 }
 
+
 button {
   background-color: #5cb85c;
   color: white;
-  padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 25px;
 
-}
+} 
 
 button:hover {
   background-color: #4cae4c;
 }
 
-/* Add a bit of responsiveness */
 @media (max-width: 600px) {
   .card {
       margin: 20px;
