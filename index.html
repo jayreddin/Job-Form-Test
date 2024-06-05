@@ -89,10 +89,11 @@
     
     <div id="page3" class="card" style="display:none;">
         <h2>Tasks Completed</h2>
+        <input type="text" id="task1" placeholder="Task 1">
         <div class="full-width-button-addtasks">
             <button onclick="addTask()">Add Tasks</button>
         </div>
-        <input type="text" id="task1" placeholder="Task 1">
+   <!--     <input type="text" id="task1" placeholder="Task 1"> -->
           
         <div class="card-footer">
             <button onclick="previousPage(2)">Previous</button>
@@ -131,10 +132,11 @@
     
     <h2>List Suppliers Below:</h2>
     <div id="supplier"></div>
+    <input type="text" id="supplier1" placeholder="Supplier 1">
     <div class="full-width-button-suppliers">
         <button onclick="addSuppliers()">Add Here</button>
     </div>
-    <input type="text" id="supplier1" placeholder="Supplier 1">
+    
  
  <!--   
     <input type="text" id="supplier" placeholder="Supplier 1">
@@ -250,13 +252,16 @@
     }
     
     // add tasks more logic
-    function addTask() {
-        let taskNumber = document.querySelectorAll('[id^=task]').length + 1;
-        let input = document.createElement('input');
-        input.type = 'text';
-        input.id = 'task' + taskNumber;
-        input.placeholder = 'Task ' + taskNumber;
-        document.getElementById('page3').appendChild(input);
+        function addTask() {
+            let taskNumber = document.querySelectorAll('#page3 [id^=task]').length + 1;
+            let input = document.createElement('input');
+            input.type = 'text';
+            input.id = 'task' + taskNumber;
+            input.placeholder = 'Task ' + taskNumber;
+            let addButtonContainer = document.querySelector('.full-width-button-addtasks');
+            addButtonContainer.parentNode.insertBefore(input, addButtonContainer);
+        
+    
     }
 
 
@@ -279,7 +284,13 @@
         input.type = 'text';
         input.id = 'supplier' + supplierCounter;
         input.placeholder = 'Supplier ' + supplierCounter;
-        document.getElementById('page5').appendChild(input);
+
+        let addButtonContainer = document.querySelector('.full-width-button-suppliers');
+                addButtonContainer.parentNode.insertBefore(input, addButtonContainer);
+
+
+        
+        /*document.getElementById('page5').appendChild(input);*/
 
         supplierCounter++;
     }
