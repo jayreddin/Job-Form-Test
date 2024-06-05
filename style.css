@@ -144,7 +144,51 @@ body {
   font-size: 1.5em;
 }
 */
+input[type="file"] {
+  border: 1px solid #ccc;
+  display: block;
+  margin-bottom: 10px;
+}
 
+/* Container for image previews */
+.preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Individual image preview box */
+.image-preview {
+  border: 1px solid #ddd;
+  padding: 5px;
+  position: relative;
+}
+
+/* Style for the image displayed */
+.image-preview img {
+  max-width: 100px;
+  max-height: 100px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Delete button styling */
+.delete-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+/* Hover effect for delete button */
+.delete-btn:hover {
+  background-color: #ff1a1a;
+}
 
 h2 {
   color: #333;
@@ -203,6 +247,9 @@ button {
   font-size: 25px;
 
 } 
+
+.preview-container { margin-top: 20px; }
+img { max-width: 100%; max-height: 200px; }
 
 button:hover {
   background-color: #4cae4c;

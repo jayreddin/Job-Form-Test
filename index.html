@@ -181,7 +181,9 @@
 
 <div id="page8" class="card" style="display:none;">
     <h2>Upload Images</h2>
-    <input type="file" id="images">
+
+     <input type="file" id="imageInput" accept="image/*" multiple>
+      <div class="preview-container" id="previewContainer"></div>
     <div class="card-footer">
         <button onclick="previousPage()">Previous</button>
         <button onclick="submitForm()">Submit</button>
@@ -190,6 +192,33 @@
 
 <script>
 
+    document.getElementById('imageInput').addEventListener('change', function(event) {
+      const previewContainer = document.getElementById('previewContainer');
+      const files = event.target.files;
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imagePreview = document.createElement('div');
+          imagePreview.classList.add('image-preview');
+
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          imagePreview.appendChild(img);
+
+          const deleteBtn = document.createElement('button');
+          deleteBtn.classList.add('delete-btn');
+          deleteBtn.innerText = 'X';
+          deleteBtn.onclick = function() {
+            previewContainer.removeChild(imagePreview);
+          };
+          imagePreview.appendChild(deleteBtn);
+
+          previewContainer.appendChild(imagePreview);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
 
     let currentPage = 1;
     let data = {};
@@ -307,6 +336,7 @@
         this.style.height = 'auto';
         this.style.height = this.scrollHeight + 'px';
       }
+
 
 
     function submitForm() {
