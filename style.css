@@ -26,10 +26,70 @@ body {
 
 .gps-button {
 
-  width: auto;
+  margin-bottom: 50px;
+  margin: auto;
+  width: 170px;
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  height: 80px; 
+}
+
+.gps-button button {
+
+  margin-bottom: 50px;
+  margin: auto;
+  width: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px; 
+}
+
+.full-width-button-addtasks {
+
+  margin-bottom: 50px;
+  margin: auto;
+  width: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px; 
+}
+
+.full-width-button-addtasks button {
+
+  margin-bottom: 50px;
+  margin: auto;
+  width: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px; 
+}
+
+.full-width-button-suppliers {
+
+  margin-bottom: 50px;
+  margin: auto;
+  width: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px; 
+  text-align: center;
+}
+
+.full-width-button-suppliers button {
+
+  margin-bottom: 50px;
+  margin: auto;
+  width: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px; 
+  text-align: center;
 }
 
 .card-footer {
@@ -43,11 +103,37 @@ body {
   justify-content: space-between;
 }
 
+.card-footer-P1 {
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  background-color: #f1f1f1;
+  border-top: 0px solid #ccc;
+  justify-content: space-between;
+  text-align: center;
+
+}
+
+.card-footer-P1 button {
+
+  margin-bottom: 50px;
+  margin: auto;
+  width: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px; 
+}
+
 .card-footer button {
     margin-bottom: 50px;
     margin: 0 20px;
-    marign-top: 50px;
-    width: 130px;
+    width: 170px;
+    height: 80px;
 }
 
 .yes-no-options {

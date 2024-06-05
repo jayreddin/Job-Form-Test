@@ -12,7 +12,7 @@
 <div id="page1" class="card">
     <h2>Technicians Name</h2>
     <input type="text" id="name" placeholder="Enter name here">
-    <div class="card-footer">
+    <div class="card-footer-P1">
     <button onclick="nextPage(1)">Next</button>
 </div>
 </div>
@@ -89,14 +89,11 @@
     
     <div id="page3" class="card" style="display:none;">
         <h2>Tasks Completed</h2>
-        <div class="full-width-button">
+        <div class="full-width-button-addtasks">
             <button onclick="addTask()">Add Tasks</button>
         </div>
-        <input type="text" id="task1" placeholder="1st Task">
-        
-        
-            
-       
+        <input type="text" id="task1" placeholder="Task 1">
+          
         <div class="card-footer">
             <button onclick="previousPage(2)">Previous</button>
             <button onclick="nextPage(3)">Next</button>
@@ -115,14 +112,29 @@
     </div>
 
 <div id="page5" class="card" style="display:none;">
+  
+
     <h2>How Many Invoices?</h2>
-    <input type="number" id="invoices"
-        pattern="\d*" inputmode="numeric">
+    <input type="number" id="invoices" placeholder="Enter number of invoices" pattern="[0-9]*" inputmode="numeric">
+  
+<!--    <input type="number" id="invoices"
+        pattern="\d*" inputmode="numeric"> -->
+
+    
     <h2>List Suppliers Below:</h2>
-    <div id="suppliers"></div>
-    <div class="full-width-button">
-        <button onclick="addSuppliers()">Add Suppliers</button>
+    <div id="supplier"></div>
+    <div class="full-width-button-suppliers">
+        <button onclick="addSuppliers()">Add Here</button>
     </div>
+    <input type="text" id="supplier 1" placeholder="Supplier 1">
+ 
+ <!--   
+    <input type="text" id="supplier" placeholder="Supplier 1">
+
+    
+    <input type="text" id="supplier1" placeholder="Supplier 2">
+     -->
+    
     <div class="card-footer">
         <button onclick="previousPage(4
                                     )">Previous</button>
@@ -221,6 +233,7 @@
         document.getElementById("page" + currentPage).style.display = "block";
     }
 
+    // add tasks more logic
     function addTask() {
         let taskNumber = document.querySelectorAll('[id^=task]').length + 1;
         let input = document.createElement('input');
@@ -230,12 +243,35 @@
         document.getElementById('page3').appendChild(input);
     }
 
+
+   //Add Suppliers more logic V1
+//    function addSuppliers() {
+//        let supplierNumber = document.querySelectorAll('[id^=supplier]').length + 1;
+//        let input = document.createElement('input');
+    //    input.type = 'text';
+  //      input.id = 'supplier' + supplierNumber;
+  //      input.placeholder = 'Supplier ' + supplierNumber;
+ //       document.getElementById('page5').appendChild(input);
+//    }
+
+
+     //Add Suppliers more logic V2
+    let supplierCounter = 2;
+
     function addSuppliers() {
-        let suppliers = document.getElementById('suppliers');
         let input = document.createElement('input');
         input.type = 'text';
-        suppliers.appendChild(input);
+        input.id = 'supplier' + supplierCounter;
+        input.placeholder = 'Supplier ' + supplierCounter;
+        document.getElementById('page5').appendChild(input);
+
+        supplierCounter++;
     }
+
+    function resetSupplierCounter() {
+        supplierCounter = 1;
+    }
+
 
     function submitForm() {
         // Compile form data and generate PDF
