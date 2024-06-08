@@ -3,12 +3,28 @@ body {
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-  
+
+}
+
+h2 {
+  color: #000000;
+  margin-bottom: 20px;
+  text-align: center;
+  font-style: bold;
+  font-size: 35px;
+}
+
+h3 {
+  color: #000000;
+  margin-bottom: 20px;
+  text-align: center;
+  font-style: bold;
+  font-size: 30px;
 }
 
 .card {
-  position: relative; 
-  padding-bottom: 60px; 
+  position: relative;
+  padding-bottom: 60px;
 }
 
 
@@ -26,70 +42,70 @@ body {
 
 .gps-button {
 
-  margin-bottom: 50px;
-  margin: auto;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
   width: 170px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80px; 
+  height: 80px;
 }
 
 .gps-button button {
 
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   margin: auto;
   width: 170px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px; 
+  height: 80px;
 }
 
 .full-width-button-addtasks {
 
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   margin: auto;
-  width: 170px;
+  width: 280px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80px; 
+  height: 80px;
 }
 
 .full-width-button-addtasks button {
 
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   margin: auto;
-  width: 170px;
+  width: 280px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px; 
+  height: 80px;
 }
 
 .full-width-button-suppliers {
 
   margin-bottom: 50px;
   margin: auto;
-  width: 190px;
+  width: 280px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80px; 
-  text-align: center;
+  height: 80px;
 }
 
 .full-width-button-suppliers button {
 
   margin-bottom: 50px;
   margin: auto;
-  width: 190px;
+  width: 280px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px; 
-  text-align: center;
+  height: 80px;
+
 }
 
 .card-footer {
@@ -101,6 +117,7 @@ body {
   background-color: #f1f1f1;
   border-top: 0px solid #ccc;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 .card-footer-P1 {
@@ -115,6 +132,7 @@ body {
   border-top: 0px solid #ccc;
   justify-content: space-between;
   text-align: center;
+  margin-top: 10px;
 
 }
 
@@ -126,14 +144,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80px; 
+  height: 80px;
+  margin-top: 10px;
 }
 
 .card-footer button {
-    margin-bottom: 50px;
-    margin: 0 20px;
-    width: 170px;
-    height: 80px;
+  margin-bottom: 50px;
+  margin: 0 4px;
+  width: 170px;
+  height: 80px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .yes-no-options {
@@ -144,6 +165,27 @@ body {
   font-size: 1.5em;
 }
 */
+
+.upload-button {
+  margin-bottom: 50px;
+  margin: auto;
+  width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+}
+
+.upload-button button {
+  margin-bottom: 50px;
+  margin: auto;
+  width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+}
+
 input[type="file"] {
   border: 1px solid #ccc;
   display: block;
@@ -167,35 +209,78 @@ input[type="file"] {
 
 /* Style for the image displayed */
 .image-preview img {
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 100%;
+  max-height: 100%;
   display: block;
   margin-bottom: 5px;
 }
 
 /* Delete button styling */
 .delete-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(255, 95, 95);
   cursor: pointer;
-  padding: 2px 6px;
+  border: 2px solid rgb(255, 201, 201);
+  transition-duration: 0.3s;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Hover effect for delete button */
-.delete-btn:hover {
-  background-color: #ff1a1a;
+.delete-bottom {
+  width: 15px;
+  z-index: 2;
 }
 
-h2 {
-  color: #333;
-  margin-bottom: 20px;
-  text-align:center;
-  font-style:bold;
+.delete-top {
+  width: 17px;
+  transform-origin: right;
+  transition-duration: 0.3s;
+  z-index: 2;
 }
+
+.delete-button:hover .bin-top {
+  transform: rotate(45deg);
+}
+
+.delete-button:hover {
+  background-color: rgb(255, 0, 0);
+}
+
+.delete-button:active {
+  transform: scale(0.9);
+}
+
+.garbage {
+  position: absolute;
+  width: 14px;
+  height: auto;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.delete-button:hover .garbage {
+  animation: throw 0.4s linear;
+}
+
+@keyframes throw {
+  from {
+    transform: translate(-400%, -700%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+}
+
 
 input[type="text"],
 input[type="number"],
@@ -217,7 +302,8 @@ input[type="radio"] {
 .radio-group {
   display: flex;
   justify-content: center;
-  gap: 60px; /* Adjusts the space between the radio buttons */
+  gap: 120px;
+  /* Adjusts the space between the radio buttons */
   margin-bottom: 20px;
 }
 
@@ -230,14 +316,17 @@ input[type="radio"] {
 .radio-text {
   margin-bottom: 15px;
   font-size: 2em;
+  text-align: center;
+  center: 0;
   /* Space between the text and the radio button */
 }
 
 input[type="radio"] {
-  transform: scale(2.5); /* Enlarges the radio buttons */
+  transform: scale(1.5);
+  /* Enlarges the radio buttons */
 }
 
-
+/*
 button {
   background-color: #5cb85c;
   color: white;
@@ -246,18 +335,72 @@ button {
   cursor: pointer;
   font-size: 25px;
 
-} 
+} */
 
-.preview-container { margin-top: 20px; }
-img { max-width: 100%; max-height: 200px; }
 
+button {
+  height: 50px;
+  width: 200px;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  border: 5px solid #48BBED;
+  overflow: hidden;
+  border-radius: 30px;
+  color: #48BBED;
+  transition: all 0.5s ease-in-out;
+  font-size: 30px;
+}
+
+.btn-txt {
+  z-index: 1;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.type1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 0.5s ease-in-out;
+  background-color: #333;
+  border-radius: 30px;
+  visibility: hidden;
+  height: 10px;
+  width: 10px;
+  z-index: -1;
+}
+
+.button:hover {
+  box-shadow: 1px 1px 200px #252525;
+  color: #fff;
+  border: none;
+}
+
+.type1:hover::after {
+  visibility: visible;
+  transform: scale(100) translateX(2px);
+}
+
+.preview-container {
+  margin-top: 20px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 200px;
+}
+
+/*
 button:hover {
   background-color: #4cae4c;
 }
-
+*/
 @media (max-width: 600px) {
   .card {
-      margin: 20px;
+    margin: 20px;
   }
 }
 
@@ -267,26 +410,30 @@ button:hover {
   width: 100%;
   height: 70px;
   font-size: 25px;
+  margin-top: 20px;
 }
 
 /* Page 2 */
 #address {
   width: 100%;
   height: 70px;
-  font-size: 25px;
+  font-size: 20px;
+  margin-top: 20px;
 }
 
 /* Page 5 */
 #invoices {
   width: 100%;
-  heigth: 70px;
-  font-size: 25px; 
+  height: 70px;
+  font-size: 25px;
+  margin-top: 20px;
 }
 
 #supplier1 {
   width: 100%;
   height: 70px;
   font-size: 25px;
+  margin-top: 20px;
 }
 
 #supplier2 {
@@ -294,6 +441,7 @@ button:hover {
   height: 70px;
   font-size: 25px;
 }
+
 #supplier3 {
   width: 100%;
   height: 70px;
@@ -305,26 +453,31 @@ button:hover {
   height: 70px;
   font-size: 25px;
 }
+
 #supplier5 {
   width: 100%;
   height: 70px;
   font-size: 25px;
 }
+
 #supplier6 {
   width: 100%;
   height: 70px;
   font-size: 25px;
 }
+
 #supplier7 {
   width: 100%;
   height: 70px;
   font-size: 25px;
 }
+
 #supplier8 {
   width: 100%;
   height: 70px;
   font-size: 25px;
 }
+
 #supplier9 {
   width: 100%;
   height: 70px;
@@ -336,47 +489,57 @@ button:hover {
   width: 100%;
   height: 70px;
   font-size: 25px;
+  margin-top: 20px;
 }
+
 #task2 {
   width: 100%;
   height: 70px;
   font-size: 25px;
 }
+
 #task3 {
   width: 100%;
   height: 70px;
   font-size: 25px;
 }
+
 #task4 {
   width: 100%;
   height: 70px;
   font-size: 25px;
 }
+
 #task5 {
   width: 100%;
   height: 70px;
   font-size: 25px;
 }
+
 #task6 {
   width: 100%;
   height: 70px;
   font-size: 25px;
 }
+
 #task7 {
   width: 100%;
   height: 70px;
   font-size: 25px;
 }
+
 #task8 {
   width: 100%;
   height: 70px;
   font-size: 25px;
 }
+
 #task9 {
   width: 100%;
   height: 70px;
   font-size: 25px;
 }
+
 #task10 {
   width: 100%;
   height: 70px;
@@ -390,8 +553,53 @@ button:hover {
   font-size: 25px;
   resize: none;
   overflow: hidden;
+  margin-top: 20px;
 }
 
 
+hr {
+  height: 2px; 
+  width: 100%; 
+  margin-top: 30px;
+  margin-bottom: 20px;
+  background-color: #000000;
+}
 
+.card {
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 100%;
+  position: relative;
+  height: 100%;
+}
 
+.card input {
+  font-size: 15px;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid rgb(51, 51, 51);
+  background-color: transparent;
+  border-radius: 20px;
+  width: 80%;
+}
+
+.card label {
+  font-size: 24px;
+  padding: 0.8em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: rgb(51, 51, 51);
+  center: 0;
+  poition: absolute;
+}
+
+.card :is(input:focus, input:valid)~label {
+  transform: translateY(-50%) scale(.9);
+  margin: 0em;
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: #333333;
+}
+
+.card :is(input:focus, input:valid) {
+  border: 5px solid #48BBED;
+}
